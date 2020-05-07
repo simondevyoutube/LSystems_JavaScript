@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>L-Systems</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="./base.css">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="row center">
+    <div class="column center bordered">
+      <div class="row">
+        <h1 class="col1">Background</h1>
+        <input id="background.color" class="color" type="color" name="body" value="#d8edf9"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Presets</p>
+        <input id="presets" class="mdl-slider mdl-js-slider" type="range" min="0" max="1" value="2"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Iterations</p>
+        <input id="iterations" class="mdl-slider mdl-js-slider" type="range" min="0" max="7" value="3"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Seed</p>
+        <input id="seed" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Variability</p>
+        <input id="variability" class="mdl-slider mdl-js-slider" type="range" min="0.0" max="1.0" step="0.01" value="0.1"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Animate</p>
+        <input id="animate" class="color" type="checkbox" value="false"></input>
+      </div>
+      <div class="row">
+        <h1 class="col1">Leaves</h1>
+        <input id="leaf.color" class="color" type="color" name="body" value="#1c852b"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Type</p>
+        <input id="leaf.type" class="mdl-slider mdl-js-slider" type="range" min="0" max="4" value="0"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Repeat</p>
+        <input id="leaf.repeat" class="mdl-slider mdl-js-slider" type="range" min="1" max="10" value="1"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Length</p>
+        <input id="leaf.length" class="mdl-slider mdl-js-slider" type="range" min="0.1" max="10.0" value="5.0"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Width</p>
+        <input id="leaf.width" class="mdl-slider mdl-js-slider" type="range" min="0.5" max="40.0" value="2.0"></input>
+      </div>
+      <div class="row">
+        <h1 class="col1">Branches</h1>
+        <input id="branch.color" class="color" type="color" name="body" value="#85521c"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Alpha</p>
+        <input id="leaf.alpha" class="mdl-slider mdl-js-slider" type="range" min="0.01" max="1.0" value="0.75" step="0.01"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Length</p>
+        <input id="branch.length" class="mdl-slider mdl-js-slider" type="range" min="0.5" max="100.0" value="30.0"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Width</p>
+        <input id="branch.width" class="mdl-slider mdl-js-slider" type="range" min="0.1" max="40.0" value="10.0" step="0.1"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Angle</p>
+        <input id="branch.angle" class="mdl-slider mdl-js-slider" type="range" min="0.1" max="90.0" value="22.5" step="0.1"></input>
+      </div>
+      <div class="row">
+        <p class="col1">Width Falloff</p>
+        <input id="branch.widthFalloff" class="mdl-slider mdl-js-slider" type="range" min="0.1" max="1.0" value="0.5" step="0.01"></input>
+      </div>
+    </div>
+    <canvas id="canvas" width="900px" height="1000px"></canvas>
+  </div>
+  <script src="./src/complex.js" type="module"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
