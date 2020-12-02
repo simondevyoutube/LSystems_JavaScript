@@ -11,7 +11,7 @@ const _PRESETS = [
   {
     axiom: 'X',
     rules: [
-      ['F', 'FF'],
+      ['F', 'F-F+'],
       ['X', 'F+[-F-XF-X][+FF][--XF[+X]][++F-X]'],
     ]
   },
@@ -32,7 +32,7 @@ const _PRESETS = [
   {
     axiom: 'F',
     rules: [
-      ['F', 'F > F[+F]F[-F]F'],
+      ['F', 'F[-F+F]+F[-F]-F'],
     ]
   },
 ];
