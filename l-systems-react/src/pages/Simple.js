@@ -135,9 +135,34 @@ class LSystemDemo {
   }
 }
 
+const defaultSystemState = {
+  presets: 2,
+  iterations: 3,
+  color: '#1c852b',
+  branchColor: '#85521c',
+  length: 2,
+  width: 2,
+  alpha: '0.75',
+  branchLength: '30.0',
+  branchWidth: '1.0',
+  angle: '22.5',
+  falloff: '0.75',
+};
+
 export function Simple() {
   const [demo, setDemo] = useState(null);
-  const [lengthVal, setLengthVal] = useState('2');
+  // const [lengthVal, setLengthVal] = useState('2');
+  const [systemState, setSystemState] = useState(defaultSystemState);
+
+  function setSystemStateByKey(key, value) {
+    setSystemState({ ...systemState, [key]: value });
+    demo && demo.OnChange();
+  }
+
+  function getSystemStateByKey(key) {
+    return systemState[key];
+  }
+
   useEffect(() => {
     const Demo = new LSystemDemo();
     setDemo(Demo);
@@ -154,9 +179,8 @@ export function Simple() {
             type="range"
             min="0"
             max="3"
-            value={'2'}
-            // eslint-disable-next-line
-            // onChange={demo ? demo.OnChange() : () => {}}
+            value={getSystemStateByKey('presets')}
+            onChange={(e) => setSystemStateByKey('presets', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -167,8 +191,8 @@ export function Simple() {
             type="range"
             min="1"
             max="5"
-            value="3"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('iterations')}
+            onChange={(e) => setSystemStateByKey('iterations', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -178,25 +202,20 @@ export function Simple() {
             className="color"
             type="color"
             name="body"
-            value="#1c852b"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('color')}
+            onChange={(e) => setSystemStateByKey('color', e.target.value)}
           ></input>
         </div>
         <div className="row">
           <p className="col1">Length</p>
-          <input
-            type="number"
-            value={lengthVal}
-            onChange={(e) => setLengthVal(e.target.value)}
-          />
           <input
             id="leaf.length"
             className="mdl-slider mdl-js-slider"
             type="range"
             min="0.5"
             max="20.0"
-            value={lengthVal}
-            onChange={demo && demo.OnChange()}
+            value={getSystemStateByKey('length')}
+            onChange={(e) => setSystemStateByKey('length', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -207,8 +226,8 @@ export function Simple() {
             type="range"
             min="0.5"
             max="20.0"
-            value="2.0"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('width')}
+            onChange={(e) => setSystemStateByKey('width', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -218,8 +237,8 @@ export function Simple() {
             className="color"
             type="color"
             name="body"
-            value="#85521c"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('branchColor')}
+            onChange={(e) => setSystemStateByKey('branchColor', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -230,9 +249,9 @@ export function Simple() {
             type="range"
             min="0.01"
             max="1.0"
-            value="0.75"
             step="0.01"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('alpha')}
+            onChange={(e) => setSystemStateByKey('alpha', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -243,8 +262,10 @@ export function Simple() {
             type="range"
             min="0.5"
             max="100.0"
-            value="30.0"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('branchLength')}
+            onChange={(e) =>
+              setSystemStateByKey('branchLength', e.target.value)
+            }
           ></input>
         </div>
         <div className="row">
@@ -255,9 +276,9 @@ export function Simple() {
             type="range"
             min="0.1"
             max="10.0"
-            value="1.0"
             step="0.1"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('branchWidth')}
+            onChange={(e) => setSystemStateByKey('branchWidth', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -268,9 +289,9 @@ export function Simple() {
             type="range"
             min="0.1"
             max="90.0"
-            value="22.5"
             step="0.1"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('angle')}
+            onChange={(e) => setSystemStateByKey('angle', e.target.value)}
           ></input>
         </div>
         <div className="row">
@@ -281,9 +302,9 @@ export function Simple() {
             type="range"
             min="0.1"
             max="1.0"
-            value="0.75"
             step="0.01"
-            // onChange={window.Demo.OnChange()}
+            value={getSystemStateByKey('falloff')}
+            onChange={(e) => setSystemStateByKey('falloff', e.target.value)}
           ></input>
         </div>
       </div>
